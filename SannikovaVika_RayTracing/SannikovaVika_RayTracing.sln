@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SannikovaVika_RayTracing", "SannikovaVika_RayTracing\SannikovaVika_RayTracing.csproj", "{DE5B82FB-B282-4B6E-822A-70134D9E1D69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SannikovaVika_RayTracing", "SannikovaVika_RayTracing\SannikovaVika_RayTracing.csproj", "{94ABC434-6722-4350-92FC-DE3BE6500C07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DE5B82FB-B282-4B6E-822A-70134D9E1D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE5B82FB-B282-4B6E-822A-70134D9E1D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE5B82FB-B282-4B6E-822A-70134D9E1D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE5B82FB-B282-4B6E-822A-70134D9E1D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94ABC434-6722-4350-92FC-DE3BE6500C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94ABC434-6722-4350-92FC-DE3BE6500C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94ABC434-6722-4350-92FC-DE3BE6500C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94ABC434-6722-4350-92FC-DE3BE6500C07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
