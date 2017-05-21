@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using OpenTK;
-using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using OpenTK.Input;
+
+
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using OpenTK;
+//using OpenTK.Graphics.OpenGL;
+//using System.Drawing;
+//using System.IO;
 //using OpenTK.Input;
+
 
 namespace SannikovaVika_RayTracing
 {
@@ -21,74 +22,41 @@ namespace SannikovaVika_RayTracing
         public Form1()
         {
             InitializeComponent();
+            glControl1.Invalidate();
         }
 
-        //int BasicProgramID; //Номер дескриптора на графической карте
-        //int BasicVertexShader; //Адрес вершинного шейдера  
-        //int BasicFragmentShader; //Адрес фрагментного шейдера
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-        //float angelX = 0.0f; // 0 to 360
-        //float angelY = 0.0f; //-90 to 90
-        //int mouseX = 0;
-        //int mouseY = 0;
-        //float dx = 0, dy = 0, dz = 0;
-        //int Wx = 0, Wy = 0;
+        }
 
-        //int attribute_vpos; //Адрес параметра позиции
-        //int vboVertexPosition; //Адрес буфера вершин объекта для нашего параметра позиции
-        //int uniform_pos;
-        //int uniform_aspect;
-        //float aspect;
-        //Vector3 camera_position;
-        //Vector3[] vertdata; //Массив позиций вершин
+        private void glControl1_Paint(object sender, PaintEventArgs e)
+        {
 
-        //void loadShader(String filename, ShaderType type, int program, out int address)
-        //{
-        //    address = GL.CreateShader(type);
-        //    using (System.IO.StreamReader sr = new StreamReader(filename))
-        //    {
-        //        GL.ShaderSource(address, sr.ReadToEnd());
-        //    }
-        //    GL.CompileShader(address);
-        //    GL.AttachShader(program, address);
-        //    Console.WriteLine(GL.GetShaderInfoLog(address));
-        //}
+            shader m = new shader();
 
-        //private void InitShaders()
-        //{
-        //    // создание объекта программы 
-        //    BasicProgramID = GL.CreateProgram();
-        //    loadShader("C:\\Users\\Виктория\\Documents\\Visual Studio 2015\\Projects\\SannikovaVika_RayTracing\\raytracing.vert", ShaderType.VertexShader, BasicProgramID, out BasicVertexShader);
-        //    loadShader("C:\\Users\\Виктория\\Documents\\Visual Studio 2015\\Projects\\SannikovaVika_RayTracing\\raytracing.frag", ShaderType.FragmentShader, BasicProgramID, out BasicFragmentShader);
-        //    //Компоновка программы
-        //    GL.LinkProgram(BasicProgramID);
+            Console.WriteLine(m.glslVersion);
+            Console.WriteLine(m.glVersion);
 
-        //    // Проверить успех компоновки
-        //    int status = 0;
-        //    GL.GetProgram(BasicProgramID, GetProgramParameterName.LinkStatus, out status);
+            m.InitShaders(glControl1.Width / (float)glControl1.Height);
 
-        //    Console.WriteLine(GL.GetProgramInfoLog(BasicProgramID));
+            GL.Viewport(0, 0, glControl1.Width, glControl1.Height);
 
-        //    // attribute_vpos = GL.GetAttribLocation(BasicProgramID, "vPosition");
-        //    // uniform_pos = GL.GetUniformLocation(BasicProgramID, "camera_position");
-        //    // uniform_aspect = GL.GetUniformLocation(BasicProgramID, "aspect");
-
-        //    // GL.GenBuffers(1, out vboVertexPosition);
-
-        //    vertdata = new Vector3[] {new Vector3(-1f, -1f, 0f),
-        //                              new Vector3( 1f, -1f, 0f),
-        //                              new Vector3( 1f, 1f, 0f),
-        //                              new Vector3(-1f, 1f, 0f) };
-        //    GL.GenBuffers(1, out vboVertexPosition);
-        //    GL.BindBuffer(BufferTarget.ArrayBuffer, vboVertexPosition);
-        //    GL.BufferData<Vector3>(BufferTarget.ArrayBuffer, (IntPtr)(vertdata.Length * Vector3.SizeInBytes), vertdata, BufferUsageHint.StaticDraw);
-        //    GL.VertexAttribPointer(attribute_vpos, 3, VertexAttribPointerType.Float, false, 0, 0);
-        //    GL.Uniform3(uniform_pos, camera_position);
-        //    GL.Uniform1(uniform_aspect, aspect);
-        //    GL.UseProgram(BasicProgramID);
-        //    GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-        //}
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.Enable(EnableCap.DepthTest);
 
 
+            GL.EnableVertexAttribArray(m.attribute_vpos);
+
+
+            Console.WriteLine("OK");
+            GL.DrawArrays(PrimitiveType.Quads, 0, 4);
+
+
+            GL.DisableVertexAttribArray(m.attribute_vpos);
+
+            glControl1.SwapBuffers();
+            GL.UseProgram(0);
+        }
     }
 }

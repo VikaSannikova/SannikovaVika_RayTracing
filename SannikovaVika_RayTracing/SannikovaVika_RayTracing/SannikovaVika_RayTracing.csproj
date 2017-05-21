@@ -79,6 +79,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="raytracing.frag" />
+    <None Include="raytracing.vert" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
