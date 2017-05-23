@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.IO;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 
@@ -33,7 +35,6 @@ namespace SannikovaVika_RayTracing
         private void glControl1_Paint(object sender, PaintEventArgs e)
         {
 
-            shader m = new shader();
 
 
             GL.EnableVertexAttribArray(m.attribute_vpos);
