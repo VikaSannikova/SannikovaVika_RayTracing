@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using System.Drawing;
 using System.IO;
-using OpenTK.Input;
 //using OpenTK.Input;
 
 namespace SannikovaVika_RayTracing
 {
     class shader
     {
+        //int a, b, c, d;
+        //static float x, y, z;
+        //Vector3 delta = new Vector3(-3.0f, -8.0f, -2.0f);
 
         public string glVersion;
         public string glslVersion;
@@ -75,7 +72,23 @@ namespace SannikovaVika_RayTracing
             GL.Uniform1(uniform_aspect, aspect);       //этого тоже
             GL.UseProgram(BasicProgramID);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+        }
+       
+        public void Refresh(Vector3 delta)
+        {
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Draw(delta);
+        }
+        public void Draw(Vector3 delta)
+        {
+            GL.UseProgram(BasicProgramID);
+            GL.Uniform3(GL.GetUniformLocation(BasicProgramID, "delta"), delta);
+            GL.EnableVertexAttribArray(0);
+            GL.DrawArrays(PrimitiveType.Quads, 0, 4);
+            GL.DisableVertexAttribArray(0);
+            GL.UseProgram(0);
+        }
 
-        }        
-    }
-}
+    }        
+ }
+
